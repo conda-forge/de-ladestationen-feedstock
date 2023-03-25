@@ -26,7 +26,7 @@ requirements:
 
 test:
   imports:
-    - deutschland
+    - deutschland.ladestationen
   commands:
     - pip check
   requires:
