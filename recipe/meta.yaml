@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/de-ladestationen-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/de-ladestationen-{{ version }}.tar.gz
   sha256: 24ba8446e61ef8c9fb9a62b36d98bf24df41f0703381e165aa3a14f0a9483d11
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
     - poetry
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - python-dateutil
     - urllib3 >=1.25.3
 
@@ -31,6 +31,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/bundesAPI/ladestationen-api
